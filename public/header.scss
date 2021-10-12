@@ -1,0 +1,23 @@
+@import 'variables.scss';
+
+header {
+    height: $header_height;
+    background: $main_red;
+    width: 100vw;
+    padding: 1rem;
+
+    a.logo {
+        height: 100%;
+        svg {
+            height: calc(#{$header_height} - #{$padding});
+        }
+    }
+
+    .container {
+        height: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

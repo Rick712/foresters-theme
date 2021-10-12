@@ -1,0 +1,91 @@
+@import './mixins.scss';
+
+$mobile: 768px;
+$laptop: 1024px;
+$desktop: 1200px;
+
+$main_red: #cf1b15;
+$text_main: #1a1a1a;
+$text_white: #ffffff;
+
+$font_heading_1: 700 6.4rem/1.4 sans-serif;
+$font_heading_2: 700 3.4rem/1.4 sans-serif;
+$font_heading_3: 700 2rem/1.4 sans-serif;
+$font_heading_4: 700 1.8rem/1.4 sans-serif;
+
+$font_body_1: 400 1.8rem/1.4 sans-serif;
+$font_body_2: 400 1.6rem/1.4 sans-serif;
+$font_body_3: 400 1.4rem/1.4 sans-serif;
+
+$font_cta: 700 2rem/1.4 sans-serif;
+
+$header_height: 8rem;
+$max-width: 90rem;
+$padding: 1.6rem;
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, calc(100% / 4));
+    .g-1 {
+        grid-column: span 1;
+    }
+    .g-2 {
+        grid-column: span 2;
+    }
+    .g-3 {
+        grid-column: span 3;
+    }
+    .g-4 {
+        grid-column: span 4;
+    }
+}
+
+@include larger-than-mobile {
+    .grid {
+        grid-template-columns: repeat(auto-fill, calc(100% / 4));
+
+        .g-m-1 {
+            grid-column: span 1;
+        }
+        .g-m-2 {
+            grid-column: span;
+        }
+        .g-m-3 {
+            grid-column: span 3;
+        }
+        .g-m-4 {
+            grid-column: span 4;
+        }
+    }
+}
+
+@include larger-than-laptop {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, calc(100% / 8));
+        .g-l-1 {
+            grid-column: span 1;
+        }
+        .g-l-2 {
+            grid-column: span 2;
+        }
+        .g-l-3 {
+            grid-column: span 3;
+        }
+        .g-l-4 {
+            grid-column: span 4;
+        }
+        .g-l-5 {
+            grid-column: span 5;
+        }
+        .g-l-6 {
+            grid-column: span 6;
+        }
+        .g-l-7 {
+            grid-column: span 7;
+        }
+        .g-l-8 {
+            grid-column: span 8;
+        }
+    }
+}
