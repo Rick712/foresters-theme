@@ -12,6 +12,6 @@ The theme uses gulp to convert scss into css. Before you can use the gulpfile, y
 ## Plugins
 The theme uses the current plugins (plugin files not included in repository, ask the contributor for the .zip):
 
-- Advanced Custom Fields (required)
+- Advanced Custom Fields Pro (required)
 
 An export of the custom fields can be found in the root directory of the repository
