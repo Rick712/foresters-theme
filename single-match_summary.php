@@ -7,8 +7,7 @@
 
 <main class="page match">
 
-    <div class="header">
-        <img src=<?php echo get_the_post_thumbnail_url(); ?> />
+    <div class="header"  style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>')">
         <div class="meta container">
             <?php if($highlighted) echo '<div class="label">Uitgelicht</div>'?>
             <?php if($team) echo '<div class="label team">' . $team .'</div>'?>

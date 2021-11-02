@@ -122,8 +122,80 @@ div {
 }
 
 .frontpage {
-    .hero {
-        height: calc(100vh - #{$header_height});
+    .header {
+        display: grid;
+        grid-template-columns: repeat(1fr);
+        grid-template-rows: repeat(5, 20rem);
+        margin: 2rem;
+        margin-bottom: 4rem;
+        box-shadow: 0 0 1rem 0.3rem rgba(0, 0, 0, 0.2);
+
+        @include larger-than-mobile {
+            height: 60rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            margin: 5rem;
+            margin-bottom: 8rem;
+        }
+
+        article {
+            display: block;
+            width: 100%;
+            height: 100%;
+            grid-column: span 2;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.2);
+                transition: background-color 0.2s ease-in-out;
+            }
+
+            &:hover {
+                z-index: 1;
+                transform: scale(1.05);
+
+                &::before {
+                    background-color: rgba(0, 0, 0, 0);
+                }
+            }
+
+            @include larger-than-mobile {
+                grid-row: span 1;
+                grid-column: span 1;
+            }
+
+            &:nth-of-type(1) {
+                background-color: red;
+                grid-row: span 2;
+                grid-column: span 2;
+
+                @include larger-than-mobile {
+                    grid-row: span 3;
+                    grid-column: span 2;
+                }
+            }
+
+            &:nth-of-type(2) {
+                background-color: green;
+            }
+
+            &:nth-of-type(3) {
+                background-color: blue;
+            }
+
+            &:nth-of-type(4) {
+                background-color: yellow;
+            }
+        }
     }
 }
 
@@ -196,14 +268,15 @@ main {
 }
 
 .match {
+    $container-width: 70rem;
+
     .header {
         position: relative;
-        max-height: 60vh;
-        overflow: hidden;
+        height: 60vh;
 
-        img {
-            width: 100vw;
-        }
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
 
         .meta {
             position: absolute;
@@ -211,8 +284,8 @@ main {
             width: 100%;
             padding: 2rem;
 
-            @include larger-than-mobile {
-                left: calc((100% - 90rem) / 2);
+            @include bp-container {
+                left: calc((100vw - #{$container-width}) / 2);
             }
 
             .label {
@@ -224,6 +297,11 @@ main {
             }
         }
     }
+
+    .container {
+        max-width: $container-width;
+    }
+
     .data {
         padding-bottom: 0;
 
@@ -353,7 +431,7 @@ main {
         }
 
         img {
-            width: 100%;
+            height: 100%;
         }
 
         h1 {
