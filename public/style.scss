@@ -14,7 +14,8 @@ body {
 
 p,
 a,
-li {
+li,
+div {
     font: $font_body_2;
     margin: 0;
 }
@@ -191,4 +192,66 @@ main {
 }
 
 .pvdw {
+}
+
+.match {
+    .header {
+        position: relative;
+        max-height: 60vh;
+        overflow: hidden;
+
+        img {
+            width: 100vw;
+        }
+
+        .meta {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 2rem;
+
+            @include larger-than-mobile {
+                left: calc((100% - 90rem) / 2);
+            }
+
+            .label {
+                background-color: red;
+                font-weight: 600;
+                color: white;
+                display: inline;
+                font-size: 1.6rem;
+                padding: 0.6rem 0.8rem;
+                border-radius: 0.4rem;
+
+                &:first-of-type {
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+    .data {
+        padding-bottom: 0;
+
+        h1 {
+            font: $font_heading_2;
+            margin-top: 0;
+        }
+
+        .author {
+            font: $font_heading_4;
+            margin-bottom: 0;
+        }
+
+        .date {
+            font: $font_body_1;
+            margin-bottom: 0;
+        }
+    }
+
+    .content {
+        p {
+            font: $font_body_4;
+            margin-bottom: 1.6rem;
+        }
+    }
 }
