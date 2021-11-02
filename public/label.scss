@@ -1,0 +1,20 @@
+@mixin label {
+    background-color: #f00000;
+    font-weight: 600;
+    color: #fff;
+    display: inline;
+    font-size: 1.6rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.4rem;
+
+    @content;
+}
+
+@mixin label-team {
+    @include label {
+        background-color: #fff;
+        color: #1a1a1a;
+
+        @content;
+    }
+}

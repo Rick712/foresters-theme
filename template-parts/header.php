@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="container">
-            <a class="logo">
+            <a class="logo" href="<?php echo home_url() ?>">
                 <?php include 'icons/logo.svg'; ?>
             </a>     
         </div>

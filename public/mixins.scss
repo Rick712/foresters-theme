@@ -4,6 +4,12 @@
     }
 }
 
+@mixin smaller-than-laptop {
+    @media (max-width: $laptop) {
+        @content;
+    }
+}
+
 @mixin larger-than-laptop {
     @media (min-width: $laptop) {
         @content;

@@ -1,6 +1,7 @@
 @import 'variables.scss';
 @import 'header.scss';
 @import 'footer.scss';
+@import 'label.scss';
 
 html,
 body {
@@ -14,7 +15,8 @@ body {
 
 p,
 a,
-li {
+li,
+div {
     font: $font_body_2;
     margin: 0;
 }
@@ -191,4 +193,186 @@ main {
 }
 
 .pvdw {
+}
+
+.match {
+    .header {
+        position: relative;
+        max-height: 60vh;
+        overflow: hidden;
+
+        img {
+            width: 100vw;
+        }
+
+        .meta {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 2rem;
+
+            @include larger-than-mobile {
+                left: calc((100% - 90rem) / 2);
+            }
+
+            .label {
+                @include label;
+
+                &:first-of-type {
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+    .data {
+        padding-bottom: 0;
+
+        h1 {
+            font: $font_heading_2;
+            margin-top: 0;
+        }
+
+        .author {
+            font: $font_heading_4;
+            margin-bottom: 0;
+        }
+
+        .date {
+            font: $font_body_1;
+            margin-bottom: 0;
+        }
+    }
+
+    .content {
+        p {
+            font: $font_body_4;
+            margin-bottom: 1.6rem;
+        }
+    }
+}
+
+.matches {
+    article {
+        display: flex;
+        height: 12rem;
+        margin-bottom: 1.6rem;
+        position: relative;
+        overflow: hidden;
+
+        &.highlighted {
+            display: block;
+            height: auto;
+            border-radius: 0.4rem;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
+            .content {
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                padding: 1.6rem;
+                background: linear-gradient(
+                    360deg,
+                    rgba(0, 0, 0, 1) 0%,
+                    rgba(0, 0, 0, 0.8) 50%,
+                    rgba(0, 0, 0, 0) 100%
+                );
+                border-radius: 0 0 0.4rem 0.4rem;
+
+                h1,
+                p {
+                    color: #fff;
+                }
+
+                @include larger-than-laptop {
+                    padding: 2.5rem 3rem;
+
+                    h1 {
+                        font: $font_heading_2;
+                    }
+                }
+            }
+
+            .labels {
+                margin-bottom: 1rem;
+            }
+        }
+
+        a {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        .image {
+            position: relative;
+            width: auto;
+            margin-right: 1.6rem;
+
+            span {
+                display: block;
+                width: 20rem;
+                height: 12rem;
+                overflow: hidden;
+                border-radius: 0.4rem;
+            }
+
+            > div {
+                position: absolute;
+                left: 0.6rem;
+                bottom: 0.9rem;
+            }
+        }
+
+        .content {
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+        }
+
+        .label {
+            @include label {
+                font-size: 1.2rem;
+            }
+
+            &:first-of-type {
+                margin-right: 1rem;
+            }
+
+            &.team {
+                @include label-team {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        p {
+            display: none;
+
+            @include larger-than-mobile {
+                display: block;
+            }
+        }
+
+        @include smaller-than-laptop {
+            .content {
+                width: 100%;
+            }
+        }
+    }
 }

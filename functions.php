@@ -14,13 +14,35 @@ register_post_type(
             'add_new' => 'Nieuwe PvdW'
         ),
         'public' => true,
-        'has_archive' => true,
+        'has_archive' => false,
         'rewrite' => array('slug' => 'pupil-van-de-week'),
-        'rest_base' => 'pupil-van-de-week',
         'show_ui' => true,
         'description' => 'Pupil van de week',
         'supports' => array('title', 'thumbnail', 'editor', 'page-attributes'),
     )
 );
+
+
+register_post_type(
+    'match_summary',
+    array(
+        'labels' => array(
+            'name' => 'Wedstrijdverslag',
+            'singular_name' => 'Wedstrijdverslag',
+            'add_new' => 'Nieuw wedstrijdverslag'
+        ),
+        'public' => true,
+        'has_archive' => false,
+        'rewrite' => array('slug' => 'wedstrijd-verslag'),
+        'show_ui' => true,
+        'description' => 'Wedstrijd verslag',
+        'supports' => array('title', 'thumbnail', 'editor', 'page-attributes'),
+    )
+);
+
+function wpdocs_custom_excerpt_length( $length ) {
+    return 30;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 ?>
