@@ -96,7 +96,7 @@ header {
   header a.logo {
     height: 100%; }
     header a.logo svg {
-      height: calc(8rem - 1.6rem); }
+      height: 6rem; }
   header .container {
     height: 100%;
     padding: 0;
@@ -181,6 +181,11 @@ div {
 .page {
   width: 100vw; }
 
+.title {
+  font: 700 3.4rem/1.4 sans-serif;
+  margin-bottom: 1rem;
+  margin-top: 0; }
+
 .container {
   max-width: 90rem;
   margin: 0 auto; }
@@ -239,6 +244,10 @@ div {
     .hero .text {
       font: 700 2rem/1.4 sans-serif; } }
 
+.banner .title {
+  font: 700 2rem/1.4 sans-serif;
+  margin-top: 0; }
+
 .frontpage .header {
   display: grid;
   grid-template-columns: repeat(1fr);
@@ -261,6 +270,12 @@ div {
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
     position: relative; }
+    @media (min-width: 1024px) {
+      .frontpage .header article:hover {
+        z-index: 1;
+        transform: scale(1.05); }
+        .frontpage .header article:hover::before {
+          background-color: rgba(0, 0, 0, 0); } }
     .frontpage .header article::before {
       content: '';
       position: absolute;
@@ -269,13 +284,10 @@ div {
       height: 100%;
       top: 0;
       left: 0;
-      background-color: rgba(0, 0, 0, 0.2);
       transition: background-color 0.2s ease-in-out; }
-    .frontpage .header article:hover {
-      z-index: 1;
-      transform: scale(1.05); }
-      .frontpage .header article:hover::before {
-        background-color: rgba(0, 0, 0, 0); }
+      @media (min-width: 1024px) {
+        .frontpage .header article::before {
+          background-color: rgba(0, 0, 0, 0.2); } }
     @media (min-width: 768px) {
       .frontpage .header article {
         grid-row: span 1;
@@ -306,15 +318,30 @@ main > .container {
   text-decoration: none; }
 
 .content-with-image .image {
-  width: 100%; }
+  width: 100%;
+  grid-row: 2;
+  margin-top: 1rem; }
 
 .content-with-image img {
   width: 100%; }
 
+.content-with-image.image-first .text {
+  margin-right: 2rem; }
+
 .content-with-image.image-first div {
+  margin-right: 1rem;
   order: 2; }
   .content-with-image.image-first div.image {
     order: 1; }
+
+@media (min-width: 1024px) {
+  .content-with-image .image {
+    grid-row: initial;
+    margin-top: 0; }
+  .content-with-image .text {
+    margin-left: 2rem; }
+  .content-with-image.image-first .text {
+    margin-right: 2rem; } }
 
 @media (min-width: 1200px) {
   .container {
@@ -347,10 +374,11 @@ main > .container {
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 2rem; }
-    @media (min-width: 900px) {
-      .match .header .meta {
-        left: calc((100vw - 70rem) / 2); } }
+    padding: 2rem 0; }
+    .match .header .meta > div {
+      max-width: 70rem;
+      margin: 0 auto;
+      padding: 0 2rem; }
     .match .header .meta .label {
       background-color: #f00000;
       font-weight: 600;
@@ -378,7 +406,7 @@ main > .container {
     margin-bottom: 0; }
 
 .match .content p {
-  font: 400 1.6rem/1.6 sans-serif;
+  font: 400 1.8rem/1.4 sans-serif;
   margin-bottom: 1.6rem; }
 
 .matches article {
@@ -471,3 +499,64 @@ main > .container {
   @media (max-width: 1024px) {
     .matches article .content {
       width: 100%; } }
+
+.poll {
+  background-color: #ffeeee;
+  margin: 0 1.6rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem; }
+  .poll .title {
+    font-size: 1.8rem;
+    font-weight: 800; }
+  .poll .answers {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between; }
+    .poll .answers .answer {
+      min-width: calc(50% - 0.8rem);
+      display: block;
+      margin-top: 1rem;
+      padding: 1rem 1.2rem 0.7rem 3.8rem;
+      background-color: #ffffff;
+      border-radius: 0.5rem;
+      position: relative;
+      cursor: pointer; }
+      .poll .answers .answer:before {
+        content: '';
+        display: block;
+        left: 1.2rem;
+        top: 1.2rem;
+        width: 1.2rem;
+        height: 1.2rem;
+        position: absolute;
+        border-radius: 1rem;
+        background-color: #fff;
+        border: solid #f00000 0.2rem; }
+      .poll .answers .answer.selected:after {
+        content: '';
+        display: block;
+        left: 1.6rem;
+        top: 1.6rem;
+        width: 0.8rem;
+        height: 0.8rem;
+        position: absolute;
+        border-radius: 1rem;
+        background-color: #f00000; }
+  .poll .vote {
+    display: block;
+    width: 10rem;
+    text-align: center;
+    background-color: #f00000;
+    color: #fff;
+    font-weight: 800;
+    margin-left: auto;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.8rem; }
+    .poll .vote.disabled {
+      opacity: 0.5; }
+  .poll.variant .answers {
+    display: inline-block; }
+    .poll.variant .answers .answer {
+      min-width: 100%;
+      display: inherit; }

@@ -9,7 +9,7 @@ header {
     a.logo {
         height: 100%;
         svg {
-            height: calc(#{$header_height} - #{$padding});
+            height: 6rem;
         }
     }
 

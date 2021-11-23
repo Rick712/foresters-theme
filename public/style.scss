@@ -25,6 +25,12 @@ div {
     width: 100vw;
 }
 
+.title {
+    font: $font_heading_2;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
 .container {
     max-width: $max-width;
     margin: 0 auto;
@@ -121,6 +127,13 @@ div {
     }
 }
 
+.banner {
+    .title {
+        font: $font_heading_3;
+        margin-top: 0;
+    }
+}
+
 .frontpage {
     .header {
         display: grid;
@@ -147,6 +160,17 @@ div {
             cursor: pointer;
             position: relative;
 
+            @include larger-than-laptop {
+                &:hover {
+                    z-index: 1;
+                    transform: scale(1.05);
+
+                    &::before {
+                        background-color: rgba(0, 0, 0, 0);
+                    }
+                }
+            }
+
             &::before {
                 content: '';
                 position: absolute;
@@ -155,16 +179,10 @@ div {
                 height: 100%;
                 top: 0;
                 left: 0;
-                background-color: rgba(0, 0, 0, 0.2);
                 transition: background-color 0.2s ease-in-out;
-            }
 
-            &:hover {
-                z-index: 1;
-                transform: scale(1.05);
-
-                &::before {
-                    background-color: rgba(0, 0, 0, 0);
+                @include larger-than-laptop {
+                    background-color: rgba(0, 0, 0, 0.2);
                 }
             }
 
@@ -221,6 +239,8 @@ main {
 .content-with-image {
     .image {
         width: 100%;
+        grid-row: 2;
+        margin-top: 1rem;
     }
 
     img {
@@ -228,10 +248,29 @@ main {
     }
 
     &.image-first {
+        .text {
+            margin-right: 2rem;
+        }
         div {
+            margin-right: 1rem;
             order: 2;
             &.image {
                 order: 1;
+            }
+        }
+    }
+
+    @include larger-than-laptop {
+        .image {
+            grid-row: initial;
+            margin-top: 0;
+        }
+        .text {
+            margin-left: 2rem;
+        }
+        &.image-first {
+            .text {
+                margin-right: 2rem;
             }
         }
     }
@@ -282,10 +321,12 @@ main {
             position: absolute;
             bottom: 0;
             width: 100%;
-            padding: 2rem;
+            padding: 2rem 0;
 
-            @include bp-container {
-                left: calc((100vw - #{$container-width}) / 2);
+            > div {
+                max-width: $container-width;
+                margin: 0 auto;
+                padding: 0 2rem;
             }
 
             .label {
@@ -323,7 +364,7 @@ main {
 
     .content {
         p {
-            font: $font_body_4;
+            font: $font_body_1;
             margin-bottom: 1.6rem;
         }
     }
@@ -450,6 +491,90 @@ main {
         @include smaller-than-laptop {
             .content {
                 width: 100%;
+            }
+        }
+    }
+}
+
+.poll {
+    background-color: #ffeeee;
+    margin: 0 1.6rem;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+
+    .title {
+        font-size: 1.8rem;
+        font-weight: 800;
+    }
+
+    .answers {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+
+        .answer {
+            min-width: calc(50% - 0.8rem);
+            display: block;
+            margin-top: 1rem;
+            padding: 1rem 1.2rem 0.7rem 3.8rem;
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            position: relative;
+            cursor: pointer;
+
+            &:before {
+                content: '';
+                display: block;
+                left: 1.2rem;
+                top: 1.2rem;
+                width: 1.2rem;
+                height: 1.2rem;
+                position: absolute;
+                border-radius: 1rem;
+                background-color: #fff;
+                border: solid #f00000 0.2rem;
+            }
+
+            &.selected {
+                &:after {
+                    content: '';
+                    display: block;
+                    left: 1.6rem;
+                    top: 1.6rem;
+                    width: 0.8rem;
+                    height: 0.8rem;
+                    position: absolute;
+                    border-radius: 1rem;
+                    background-color: #f00000;
+                }
+            }
+        }
+    }
+
+    .vote {
+        display: block;
+        width: 10rem;
+        text-align: center;
+        background-color: #f00000;
+        color: #fff;
+        font-weight: 800;
+        margin-left: auto;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 0.8rem;
+
+        &.disabled {
+            opacity: 0.5;
+        }
+    }
+
+    &.variant {
+        .answers {
+            display: inline-block;
+
+            .answer {
+                min-width: 100%;
+                display: inherit;
             }
         }
     }

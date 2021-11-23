@@ -70,12 +70,26 @@
             elseif( get_row_layout() == 'banner' ): ?>
 
                 <div class="container container__full-width banner" style="background-color: <?php the_sub_field('background_color') ?>">
-                    <div class="container" style="color: <?php the_sub_field('text_color'); ?>">
-                        <p><?php the_sub_field('title'); ?></p>
+                <div class="container" style="color: <?php the_sub_field('text_color'); ?>">
+                        <h2 class="title"><?php the_sub_field('title'); ?></h2>
+                        <p class="text"><?php the_sub_field('text'); ?></p>
                     </div>
                 </div>
 
             <?php
+             elseif( get_row_layout() == 'content-with-image' ): ?>
+
+                <div class="container grid content-with-image  <?php echo get_sub_field('image-position') ? 'image-first' : '' ?>">
+                    <div class="g-4 g-l-4 text">
+                        <h2 class="title"><?php the_sub_field('title'); ?></h2>
+                        <p><?php the_sub_field('text'); ?></p>
+                    </div>
+                    <div class="g-4 g-l-4 image">
+                        <img src="<?php the_sub_field('image'); ?> "/>
+                    </div>
+                </div>
+
+            <?php 
             endif;
         endwhile;
     endif; ?>

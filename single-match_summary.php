@@ -8,9 +8,11 @@
 <main class="page match">
 
     <div class="header"  style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>')">
-        <div class="meta container">
-            <?php if($highlighted) echo '<div class="label">Uitgelicht</div>'?>
-            <?php if($team) echo '<div class="label team">' . $team .'</div>'?>
+        <div class="meta">
+            <div>
+                <?php if($highlighted) echo '<div class="label">Uitgelicht</div>'?>
+                <?php if($team) echo '<div class="label team">' . $team .'</div>'?>
+            </div>
         </div>
 
     </div>

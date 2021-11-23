@@ -10,7 +10,9 @@
 
     if($query->have_posts()) { ?>
 
-        <div class="matches container">
+        <section class="matches container">
+
+            <h1 class="title">Wedstrijdverslagen</h1>
 
             <?php while($query->have_posts()) {
                 $query->the_post(); ?>
@@ -50,6 +52,6 @@
                 
             <?php } ?>
 
-        </div>
+        </section>
     <?php }
     wp_reset_postdata();
